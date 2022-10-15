@@ -24,9 +24,12 @@ public class PlayerShoot : MonoBehaviour
 
     private void Update()
     {
-        mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-        WeaponRotation(mousePosition);
-        Fire();
+        if (!PauseMenu.GameIsPaused)
+        {
+            mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+            WeaponRotation(mousePosition);
+            Fire();
+        }
     }
 
     private void WeaponRotation(Vector3 mousePosition)
@@ -49,6 +52,11 @@ public class PlayerShoot : MonoBehaviour
         }
 
         if (Input.GetMouseButtonDown(0) && canFire)
+        {
+            canFire = false;
+            Instantiate(bullet, bulletTransform.position, Quaternion.identity);
+        }
+        else if(Input.GetMouseButton(0) && canFire)
         {
             canFire = false;
             Instantiate(bullet, bulletTransform.position, Quaternion.identity);

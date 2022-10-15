@@ -11,6 +11,9 @@ public class SpawnBoss : MonoBehaviour
     private float bossInterval = 15f;
     private bool isOnScene = false;
 
+    private float wave;
+    public float waveProgress;
+
     private void Start()
     {
         bossPrefab = Resources.Load<GameObject>("Prefabs/Boss");
@@ -19,21 +22,31 @@ public class SpawnBoss : MonoBehaviour
     
     void Update()
     {
-        if (isOnScene != true)
+        wave = wave + Time.deltaTime;
+        if (wave >= 50f)
         {
-            this.count = count + Time.deltaTime;
-            if (count >= bossInterval)
+            if (isOnScene != true)
             {
-                BossSpawner();
-                isOnScene = true;
-                this.count = 0f;
-                Debug.Log("Boss Spawnou");
+                this.count = count + Time.deltaTime;
+                if (count >= bossInterval)
+                {
+                    BossSpawner();
+                    isOnScene = true;
+                    this.count = 0f;
+                    Debug.Log("Boss Spawnou");
+                }
             }
         }
+        
     }
 
     void BossSpawner()
     {
         Instantiate(bossPrefab, spawnPointBoss.position, transform.rotation);
+    }
+
+    public void WaveManager()
+    {
+        
     }
 }

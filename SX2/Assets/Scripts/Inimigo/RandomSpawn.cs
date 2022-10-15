@@ -9,11 +9,9 @@ public class RandomSpawn : MonoBehaviour
 
     [HideInInspector]
     public float count;
-    private float interval = 7f;
+    private float interval = 10f;
 
-    private int wave;
-    private float waveProgress;
-    
+    public int wave;
     [HideInInspector]
     public int numSpawn;
 
@@ -26,7 +24,7 @@ public class RandomSpawn : MonoBehaviour
     void Update()
     {
         this.count = count + Time.deltaTime;
-        if(numSpawn != 2)
+        if(numSpawn != 5)
         {
             if (count >= interval)
             {
@@ -44,14 +42,7 @@ public class RandomSpawn : MonoBehaviour
         int randSpawnPoints = Random.Range(0, spawnPoints.Length);
 
         Instantiate(enemyPrefabs[0], spawnPoints[randSpawnPoints].position, transform.rotation);
-
+        this.wave++;
     } 
-
-    public void WavesManager()
-    {
-        
-
-    }
-
 
 }

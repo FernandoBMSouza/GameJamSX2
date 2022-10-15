@@ -17,7 +17,7 @@ public class PlayerShoot : MonoBehaviour
     private void Awake()
     {
         mainCamera = Camera.main;
-        bullet = Resources.Load<GameObject>("Prefabs/Bullet");
+        bullet = Resources.Load<GameObject>("Prefabs/PlayerBullet");
         bulletTransform = GameObject.Find("BulletTranform").GetComponent<Transform>();
         canFire = true;
     }

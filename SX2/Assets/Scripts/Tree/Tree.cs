@@ -5,4 +5,21 @@ using UnityEngine;
 public class Tree : MonoBehaviour
 {
     [SerializeField] private float health;
+
+    private void Update()
+    {
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Enemy")
+        {
+            health--;
+            Destroy(collision.gameObject);
+        }
+    }
 }

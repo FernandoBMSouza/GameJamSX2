@@ -6,7 +6,8 @@ using UnityEngine;
 
 public abstract class Enemy : MonoBehaviour
 {
-    protected float health, moveSpeed, distance;
+    [SerializeField] protected float health, moveSpeed;
+    protected float distance;
     protected GameObject tree;
 
     protected virtual void Awake()
@@ -16,16 +17,9 @@ public abstract class Enemy : MonoBehaviour
 
     protected virtual void Update()
     {
-        GoToTree();
-
-        if (distance <= 1)
+        if(tree != null)
         {
-            moveSpeed = 0f;
-        }
-
-        if (health == 0)
-        {
-            Death();
+            GoToTree();
         }
     }
 
@@ -40,8 +34,13 @@ public abstract class Enemy : MonoBehaviour
         transform.rotation = Quaternion.Euler(Vector3.forward * angle);
     }
 
-    protected void Death()
+    public void TakeDamage(float damage)
     {
-        Destroy(gameObject);
+        health -= damage;
+
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }

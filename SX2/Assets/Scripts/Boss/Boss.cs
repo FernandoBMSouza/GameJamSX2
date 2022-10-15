@@ -2,54 +2,41 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Boss : Enemy
 {
     [SerializeField]private Animator anim;
-    public SpriteRenderer sprite;
-
-
-    [HideInInspector]
-    public float hp;
-
-    [HideInInspector]
-    public float speed;
-
     private GameObject tree;
 
-    [HideInInspector]
-    public float distance;
+    
 
-    [SerializeField] private Transform shootPoint;
-
-    void Awake()
+    private void Awake()
     {
         tree = GameObject.FindWithTag("Arvore");
-        anim = this.GetComponent<Animator>();
+        anim = GetComponent<Animator>();
     }
-
+    // Start is called before the first frame update
     void Start()
     {
-        this.speed = 1f;
+        speed = 0.5f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        GoToTree();
-
-        if (distance <= 1)
+        Go2Tree();
+        if (distance <= 4f)
         {
             speed = 0f;
-        }  
+        }
 
         if (hp == 0)
         {
-            EnemyDead();
+            BossDeath();
         }
+
     }
 
-
-    public void GoToTree()
+    public void Go2Tree()
     {
         distance = Vector2.Distance(transform.position, tree.transform.position);
         Vector2 direction = tree.transform.position - transform.position;
@@ -60,7 +47,12 @@ public class Enemy : MonoBehaviour
         transform.rotation = Quaternion.Euler(Vector3.forward * angle);
     }
 
-    public void EnemyDead()
+    private void AttackTree()
+    {
+
+    }
+
+    void BossDeath()
     {
 
     }

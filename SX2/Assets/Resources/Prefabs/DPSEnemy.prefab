@@ -137,8 +137,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3efb8c8bf6e7215429145ee033998c96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 2
-  moveSpeed: 2
+  health: 1
+  moveSpeed: 2.5
+  weapon: {fileID: 0}
+  fireRate: 1
 --- !u!1 &8056908675133730234
 GameObject:
   m_ObjectHideFlags: 0
@@ -184,4 +186,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 0}
-  fireRate: 1
+  fireRate: 0

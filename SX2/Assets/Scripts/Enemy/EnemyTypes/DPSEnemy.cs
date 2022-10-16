@@ -4,9 +4,27 @@ using UnityEngine;
 
 public class DPSEnemy : Enemy
 {
+    [SerializeField] private float fireRate;
+
     public DPSEnemy()
     {
-        health = 2f;
-        moveSpeed = 5f;
+        health = 1f;
+        moveSpeed = 2f;
+    }
+
+    protected override void Awake()
+    {
+        base.Awake();
+        weapon = GetComponentInChildren<EnemyWeapon>();
+    }
+
+    private void Start()
+    {
+        SetFireRate();
+    }
+
+    private void SetFireRate()
+    {
+        weapon.FireRate = fireRate;
     }
 }

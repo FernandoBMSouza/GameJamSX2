@@ -10,6 +10,8 @@ public class EnemyWeapon : MonoBehaviour
     [SerializeField] private float fireRate;
     float nextFire;
 
+    public float FireRate { get { return fireRate; } set { fireRate = value; } }
+
 
     private void Awake()
     {

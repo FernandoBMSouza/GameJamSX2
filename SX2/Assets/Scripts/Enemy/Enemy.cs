@@ -9,6 +9,7 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField] protected float health, moveSpeed;
     protected float distance;
     protected GameObject tree;
+    [SerializeField] protected EnemyWeapon weapon;
 
     protected virtual void Awake()
     {

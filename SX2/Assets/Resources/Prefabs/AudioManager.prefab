@@ -44,4 +44,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edef871148d508443ae67f39060e4588, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sounds: []
+  sounds:
+  - name: ButtonClicked
+    clip: {fileID: 8300000, guid: 929b320dcbcf73242898d00d33e576f8, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Hit
+    clip: {fileID: 8300000, guid: 0ec75145f211aa54bb5f64995f29a665, type: 3}
+    volume: 0.3
+    pitch: 3
+    loop: 0
+    source: {fileID: 0}
+  - name: Death
+    clip: {fileID: 8300000, guid: 0ec75145f211aa54bb5f64995f29a665, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  currentScene:
+    m_Handle: 0

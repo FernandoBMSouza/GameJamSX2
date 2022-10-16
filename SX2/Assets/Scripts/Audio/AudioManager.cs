@@ -3,11 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
     public Sound[] sounds;
     public static AudioManager instance;
+    public Scene currentScene;
 
     private void Awake()
     {
@@ -48,5 +50,5 @@ public class AudioManager : MonoBehaviour
     }
 
     //TUTORIAL PARA IMPLEMENTAR
-    //FindObjectOfType<AudioSource>().Play("Nome_Do_Som_AQUI");
+    //FindObjectOfType<AudioManager>().Play("Nome_Do_Som_AQUI");
 }

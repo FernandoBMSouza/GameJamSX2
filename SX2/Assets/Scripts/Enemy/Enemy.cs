@@ -39,8 +39,11 @@ public abstract class Enemy : MonoBehaviour
     {
         health -= damage;
 
+        FindObjectOfType<AudioManager>().Play("Hit");
+
         if (health <= 0)
         {
+            FindObjectOfType<AudioManager>().Play("Death");
             Destroy(gameObject);
         }
     }

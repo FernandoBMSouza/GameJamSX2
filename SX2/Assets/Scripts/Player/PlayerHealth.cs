@@ -26,6 +26,11 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth -= damage;
 
+        if(gameObject.GetComponent<PlayerMovement>().enabled)
+        {
+            FindObjectOfType<AudioManager>().Play("Hit");
+        }
+
         if (currentHealth <= 0)
         {
             StartCoroutine(StunPlayer());
@@ -36,11 +41,11 @@ public class PlayerHealth : MonoBehaviour
     {
         gameObject.GetComponent<PlayerMovement>().enabled = false;
         gameObject.GetComponentInChildren<PlayerShoot>().enabled = false;
-        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        gameObject.GetComponent<SpriteRenderer>().color = Color.red;
         yield return new WaitForSeconds(interval);
         gameObject.GetComponent<PlayerMovement>().enabled = true;
         gameObject.GetComponentInChildren<PlayerShoot>().enabled = true;
-        gameObject.GetComponent<SpriteRenderer>().enabled = true;
+        gameObject.GetComponent<SpriteRenderer>().color = Color.white;
         currentHealth = maxHealth;
     }
 }

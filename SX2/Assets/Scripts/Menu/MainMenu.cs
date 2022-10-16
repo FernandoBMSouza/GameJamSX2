@@ -16,4 +16,9 @@ public class MainMenu : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void PlaySound()
+    {
+        FindObjectOfType<AudioManager>().Play("ButtonClicked");
+    }
 }

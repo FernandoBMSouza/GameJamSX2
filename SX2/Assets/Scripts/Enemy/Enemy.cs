@@ -31,7 +31,7 @@ public abstract class Enemy : MonoBehaviour
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
         transform.position = Vector2.MoveTowards(this.transform.position, tree.transform.position, moveSpeed * Time.deltaTime);
-        transform.rotation = Quaternion.Euler(Vector3.forward * angle);
+        //transform.rotation = Quaternion.Euler(Vector3.forward * angle);
     }
 
     public void TakeDamage(float damage)

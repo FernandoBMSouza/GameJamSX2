@@ -33,6 +33,10 @@ public class PlayerBullet : MonoBehaviour
         {
             //Does nothing
         }
+        else if(collision.tag == "Player")
+        {
+            //Does nothing
+        }
         else
         {
             Destroy(gameObject);

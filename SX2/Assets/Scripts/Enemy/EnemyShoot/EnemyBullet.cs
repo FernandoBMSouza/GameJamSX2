@@ -35,6 +35,10 @@ public class EnemyBullet : MonoBehaviour
         {
             //Does nothing
         }
+        else if(collision.tag == "Enemy")
+        {
+            //Does nothing
+        }
         else
         {
             Destroy(gameObject);

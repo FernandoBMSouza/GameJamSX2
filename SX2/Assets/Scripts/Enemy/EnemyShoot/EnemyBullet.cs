@@ -13,10 +13,13 @@ public class EnemyBullet : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        target = GameObject.FindGameObjectWithTag("Player");
-        moveDirection = (target.transform.position - transform.position).normalized * force;
-        rb.velocity = new Vector2(moveDirection.x, moveDirection.y);
-        //Destroy(gameObject, 3);
+        if(GameObject.FindGameObjectWithTag("Player"))
+        {
+            target = GameObject.FindGameObjectWithTag("Player");
+            moveDirection = (target.transform.position - transform.position).normalized * force;
+            rb.velocity = new Vector2(moveDirection.x, moveDirection.y);
+            //Destroy(gameObject, 3);
+        }
     }
 
 

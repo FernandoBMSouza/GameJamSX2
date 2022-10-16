@@ -4,15 +4,33 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [SerializeField] private float health;
+    [SerializeField] private float currentHealth, maxHealth = 10f;
+    [SerializeField] private float interval = 2f;
+
+    private void Start()
+    {
+        currentHealth = maxHealth;
+    }
 
     public void TakeDamage(float damage)
     {
-        health -= damage;
+        currentHealth -= damage;
 
-        if (health <= 0)
+        if (currentHealth <= 0)
         {
-            // Logica da morte do player aqui
+            StartCoroutine(StunPlayer());
         }
+    }
+
+    IEnumerator StunPlayer()
+    {
+        gameObject.GetComponent<PlayerMovement>().enabled = false;
+        gameObject.GetComponentInChildren<PlayerShoot>().enabled = false;
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        yield return new WaitForSeconds(interval);
+        gameObject.GetComponent<PlayerMovement>().enabled = true;
+        gameObject.GetComponentInChildren<PlayerShoot>().enabled = true;
+        gameObject.GetComponent<SpriteRenderer>().enabled = true;
+        currentHealth = maxHealth;
     }
 }

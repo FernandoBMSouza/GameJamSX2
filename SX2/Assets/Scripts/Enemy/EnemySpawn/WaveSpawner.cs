@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class WaveSpawner : MonoBehaviour
 {
@@ -15,6 +18,7 @@ public class WaveSpawner : MonoBehaviour
         public float rate;
     }
 
+    [SerializeField] private TMP_Text currentWaveText;
     [SerializeField] private Wave[] waves;
     private int nextWave = 0;
 
@@ -25,6 +29,11 @@ public class WaveSpawner : MonoBehaviour
     private float searchCountdown = 1f;
 
     private SpawnState state = SpawnState.COUNTING;
+
+    private void Awake()
+    {
+        currentWaveText = GameObject.Find("CurrentWaveText").GetComponent<TMP_Text>();
+    }
 
     private void Start()
     {
@@ -72,8 +81,9 @@ public class WaveSpawner : MonoBehaviour
 
         if(nextWave + 1 > waves.Length - 1)
         {
-            nextWave = 0;
-            Debug.Log("All Waves Completed! Looping...");
+            //nextWave = 0;
+            //Debug.Log("All Waves Completed! Looping...");
+            SceneManager.LoadScene("Vitoria");
         }
         else
         {
@@ -97,7 +107,10 @@ public class WaveSpawner : MonoBehaviour
 
     IEnumerator SpawnWave(Wave _wave)
     {
-        Debug.Log("Spawning Wave: " + _wave.name);
+        //Debug.Log("Spawning Wave: " + _wave.name);
+        currentWaveText.text = $"{_wave.name}";
+
+
         state = SpawnState.SPAWNING;
 
         for (int i = 0; i < _wave.count; i++)

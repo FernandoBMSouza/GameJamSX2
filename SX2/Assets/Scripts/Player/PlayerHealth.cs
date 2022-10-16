@@ -12,6 +12,16 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = maxHealth;
     }
 
+    public float GetCurrentHealth()
+    {
+        return currentHealth;
+    } 
+    
+    public float GetMaxHealth()
+    {
+        return maxHealth;
+    }
+
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;

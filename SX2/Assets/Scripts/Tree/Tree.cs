@@ -1,16 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Tree : MonoBehaviour
 {
-    [SerializeField] private float health;
+    [SerializeField] private float currentHealth, maxHealth = 10f;
+
+    private void Start()
+    {
+        currentHealth = maxHealth;
+    }
 
     private void Update()
     {
-        if (health <= 0)
+        if (currentHealth <= 0)
         {
-            Destroy(gameObject);
+            SceneManager.LoadScene("Derrota");
+            //Destroy(gameObject);
         }
     }
 
@@ -18,8 +25,17 @@ public class Tree : MonoBehaviour
     {
         if(collision.tag == "Enemy")
         {
-            health--;
+            currentHealth--;
             Destroy(collision.gameObject);
         }
+    }
+
+    public float GetMaxHealth()
+    {
+        return maxHealth;
+    }
+    public float GetCurrentHealth()
+    {
+        return currentHealth;
     }
 }
